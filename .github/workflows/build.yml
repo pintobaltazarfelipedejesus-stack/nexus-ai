@@ -20,6 +20,7 @@ jobs:
           cp nexus-ai/App.js nexus-ai/app.json app/
           cp -r nexus-ai/src app/
           cd app
+          node -e "const fs=require('fs');const j=JSON.parse(fs.readFileSync('app.json'));delete j.expo.plugins;fs.writeFileSync('app.json',JSON.stringify(j,null,2))"
           npm install
           npx expo install llama.rn expo-device expo-file-system @react-native-async-storage/async-storage
           npm install react-native-markdown-display
